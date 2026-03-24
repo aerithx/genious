@@ -20,7 +20,8 @@ sum=0
 index=0
 
 while read -r line; do
-    for num in $line; do
+    read -ra tokens <<< "$line"
+    for num in "${tokens[@]}"; do
         index=$((index + 1))
         if (( index % 2 == 1 )); then
             sum=$((sum + num))
